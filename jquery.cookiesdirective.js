@@ -112,7 +112,7 @@
 		var fullDomain = "";
 		
 		if (domain !== "") {
-		  var fullDomain = ";domain=" + domain;
+		  fullDomain = ";domain=" + domain;
 		}
 		
 		document.cookie = name+"="+value+expires+"; path=/" + fullDomain;
