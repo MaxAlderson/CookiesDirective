@@ -24,7 +24,8 @@
 			fontSize: '13px',
 			backgroundColor: '#000000',
 			backgroundOpacity: '80',
-			linkColor: '#CA0000'
+			linkColor: '#CA0000',
+			domain: ''
 		}, options);
 		
 		// Perform consent checks
@@ -32,11 +33,11 @@
 			if(settings.limit > 0) {
 				// Display limit in force, record the view
 				if(!getCookie('cookiesDisclosureCount')) {
-					setCookie('cookiesDisclosureCount',1,1);		
+					setCookie('cookiesDisclosureCount',1,1,settings.domain);		
 				} else {
 					var disclosureCount = getCookie('cookiesDisclosureCount');
 					disclosureCount ++;
-					setCookie('cookiesDisclosureCount',disclosureCount,1);
+					setCookie('cookiesDisclosureCount',disclosureCount,1,settings.domain);
 				}
 				
 				// Have we reached the display limit, if not make disclosure
@@ -100,14 +101,21 @@
 	}
 	
 	// Set cookie
-	var setCookie = function(name,value,days) {
+	var setCookie = function(name,value,days,domain) {
 		if (days) {
 			var date = new Date();
 			date.setTime(date.getTime()+(days*24*60*60*1000));
 			var expires = "; expires="+date.toGMTString();
 		}
 		else var expires = "";
-		document.cookie = name+"="+value+expires+"; path=/";
+		
+		var fullDomain = "";
+		
+		if (domain !== "") {
+		  var fullDomain = ";domain=" + domain;
+		}
+		
+		document.cookie = name+"="+value+expires+"; path=/" + fullDomain;
 	}
 	
 	// Detect IE < 9
@@ -232,7 +240,7 @@
 				$('#explicitsubmit').click(function() {
 					if($('#epdagree').is(':checked')) {	
 						// Set a cookie to prevent this being displayed again
-						setCookie('cookiesDirective',1,365);	
+						setCookie('cookiesDirective',1,365,settings.domain);	
 						// Close the overlay
 						$('#cookiesdirective').animate(opts['out'],1000,function() { 
 							// Remove the elements from the DOM and reload page
@@ -248,7 +256,7 @@
 				// Implied consent, just a button to close it
 				$('#impliedsubmit').click(function() {
 					// Set a cookie to prevent this being displayed again
-					setCookie('cookiesDirective',1,365);	
+					setCookie('cookiesDirective',1,365,settings.domain);	
 					// Close the overlay
 					$('#cookiesdirective').animate(opts['out'],1000,function() { 
 						// Remove the elements from the DOM and reload page
