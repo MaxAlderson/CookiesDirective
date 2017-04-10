@@ -25,6 +25,7 @@
 			backgroundColor: '#000000',
 			backgroundOpacity: '80',
 			linkColor: '#CA0000',
+			buttonText: 'Continue',
 			defaultChecked: true,
 			domain: ''
 		}, options);
@@ -210,7 +211,9 @@
 				html += ' checked ';
 			}
 			html += '/>&nbsp;';
-			html += '<input type="submit" name="explicitsubmit" id="explicitsubmit" value="Continue"/><br/></div></div>';
+			html += '<input type="submit" name="explicitsubmit" id="explicitsubmit" value="';
+			html += settings.buttonText;
+			html += '"/><br/></div></div>';
 		
 		} else {
 			// Implied consent disclosure
