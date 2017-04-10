@@ -12,7 +12,7 @@
 			//Options
 			explicitConsent: true,
 			position: 'top',
-			duration: 10,
+			duration: 0,
 			limit: 0,
 			message: null,				
 			cookieScripts: null,
@@ -263,14 +263,16 @@
 				});
 			}	
 			
-			// Set a timer to remove the warning after 'settings.duration' seconds
-			setTimeout(function(){
-				$('#cookiesdirective').animate({
-					opacity:'0'
-				},2000, function(){
-					$('#cookiesdirective').css(dp,'-300px');
-				});
-			}, settings.duration * 1000);
+			// Set a timer to remove the warning after 'settings.duration' seconds, set duration to 0 for infinite
+			if(settings.duration != 0 ){
+				setTimeout(function(){
+					$('#cookiesdirective').animate({
+						opacity:'0'
+					},2000, function(){
+						$('#cookiesdirective').css(dp,'-300px');
+					});
+				}, settings.duration * 1000);
+			}
 		});	
 	}
 })(jQuery);
