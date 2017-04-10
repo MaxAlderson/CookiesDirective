@@ -25,6 +25,7 @@
 			backgroundColor: '#000000',
 			backgroundOpacity: '80',
 			linkColor: '#CA0000',
+			defaultChecked: true,
 			domain: ''
 		}, options);
 		
@@ -204,7 +205,11 @@
 			// Explicit consent disclosure
 			html += scriptsDisclosure;
 			html += '<div id="epdnotick" style="color:#ca0000;display:none;margin:2px;"><span style="background:#cecece;padding:2px;">You must tick the "I accept cookies from this site" box to accept</span></div>'
-			html += '<div style="margin-top:5px;"><input type="checkbox" name="epdagree" id="epdagree" />&nbsp;';
+			html += '<div style="margin-top:5px;"><input type="checkbox" name="epdagree" id="epdagree"';
+			if(defaultChecked == true){
+				html += ' checked ';
+			}
+			html += '/>&nbsp;';
 			html += '<input type="submit" name="explicitsubmit" id="explicitsubmit" value="Continue"/><br/></div></div>';
 		
 		} else {
