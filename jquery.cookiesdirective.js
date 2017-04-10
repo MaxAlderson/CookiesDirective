@@ -206,7 +206,7 @@
 			html += scriptsDisclosure;
 			html += '<div id="epdnotick" style="color:#ca0000;display:none;margin:2px;"><span style="background:#cecece;padding:2px;">You must tick the "I accept cookies from this site" box to accept</span></div>'
 			html += '<div style="margin-top:5px;"><input type="checkbox" name="epdagree" id="epdagree"';
-			if(defaultChecked == true){
+			if(settings.defaultChecked == true){
 				html += ' checked ';
 			}
 			html += '/>&nbsp;';
