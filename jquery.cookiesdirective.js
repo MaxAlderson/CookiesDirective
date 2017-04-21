@@ -27,6 +27,7 @@
 			linkColor: '#CA0000',
 			buttonText: 'Continue',
 			defaultChecked: true,
+			showButton: true,
 			domain: ''
 		}, options);
 		
@@ -192,17 +193,20 @@
 		if(!settings.message) {
 			if(settings.explicitConsent) {
 				// Explicit consent message
-				settings.message = 'This site uses cookies. Some of the cookies we ';
-				settings.message += 'use are essential for parts of the site to operate and have already been set.';
+				settings.message = 'Cookies help us optimize your experience. ';
+				settings.message = 'They are also an essential part of some of the functionality of our website. ';
+				settings.message = 'Areas of the website may not work correctly if you choose to delete or block these cookies. ';
+				settings.meggage += '<a href="/privacy-policy-and-cookies" target="_blank">Read more.</a>';
 			} else {
 				// Implied consent message
 				settings.message = 'We have placed cookies on your computer to help make this website better.';
 			}		
 		}	
+		
 		html += settings.message;
 		
 		// Build the rest of the disclosure for implied and explicit consent
-		if(settings.explicitConsent) {
+		if(settings.explicitConsent && settings.showButton) {
 			// Explicit consent disclosure
 			html += scriptsDisclosure;
 			html += '<div id="epdnotick" style="color:#ca0000;display:none;margin:2px;"><span style="background:#cecece;padding:2px;">You must tick the "I accept cookies from this site" box to accept</span></div>'
@@ -215,12 +219,8 @@
 			html += settings.buttonText;
 			html += '"/><br/></div></div>';
 		
-		} else {
-			// Implied consent disclosure
-			html += scriptsDisclosure + ' More details can be found in our <a style="color:'+ settings.linkColor + ';';
-			html += 'font-weight:bold;font-family:' + settings.fontFamily + ';font-size:' + settings.fontSize + ';" href="'+ settings.privacyPolicyUri + '">privacy policy</a>.';
-			html += '<div style="margin-top:5px;"><input type="submit" name="impliedsubmit" id="impliedsubmit" value="Do not show this message again"/></div></div>';	
-		}		
+		} 
+		
 		html += '</div></div>';
 		$('body').append(html);
 		
