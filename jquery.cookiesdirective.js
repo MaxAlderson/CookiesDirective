@@ -28,6 +28,7 @@
 			buttonText: 'Continue',
 			defaultChecked: true,
 			showButton: true,
+			positionFixed: true,
 			domain: ''
 		}, options);
 		
@@ -154,10 +155,13 @@
 	// Disclosure routines
 	var disclosure = function(options) {
 		var settings = options;
-		settings.css = 'fixed';
+		
+		if(settings.positionFixed) {
+			settings.css = 'fixed';
+		}
 		
 		// IE 9 and lower has issues with position:fixed, either out the box or in compatibility mode - fix that
-		if(checkIE()) {
+		if(checkIE() && settings.positionFixed) {
 			settings.position = 'top';
 			settings.css = 'absolute';
 		}
@@ -222,7 +226,7 @@
 		} 
 		
 		html += '</div></div>';
-		$('body').append(html);
+		$('body').prepend(html);
 		
 		// Serve the disclosure, and be smarter about branching
 		var dp = settings.position.toLowerCase();
