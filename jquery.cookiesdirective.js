@@ -194,8 +194,8 @@
 			if(settings.explicitConsent) {
 				// Explicit consent message
 				settings.message = 'Cookies help us optimize your experience. ';
-				settings.message = 'They are also an essential part of some of the functionality of our website. ';
-				settings.message = 'Areas of the website may not work correctly if you choose to delete or block these cookies. ';
+				settings.message += 'They are also an essential part of some of the functionality of our website. ';
+				settings.message += 'Areas of the website may not work correctly if you choose to delete or block these cookies. ';
 				settings.meggage += '<a href="/privacy-policy-and-cookies" target="_blank">Read more.</a>';
 			} else {
 				// Implied consent message
