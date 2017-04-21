@@ -204,14 +204,14 @@
 				settings.message += 'They are also an essential part of some of the functionality of our website. ';
 				settings.message += 'Areas of the website may not work correctly if you choose to delete or block these cookies. ';
 				settings.message += '<a href="/privacy-policy-and-cookies" target="_blank">Read more</a>';
-				settings.message += '<i id="impliedsubmit" class="fa fa-times pull-right" style="font-size:16px;color:rgba(0, 0, 0, 0.41);cursor:pointer;"></i>';
+				settings.message += '<i id="impliedsubmit" class="fa fa-times" style="font-size:16px;margin-left:15px;color:rgba(0, 0, 0, 0.41);cursor:pointer;"></i>';
 			} else {
 				// Explicit consent message
 				settings.message = 'Cookies help us optimize your experience. ';
 				settings.message += 'They are also an essential part of some of the functionality of our website. ';
 				settings.message += 'Areas of the website may not work correctly if you choose to delete or block these cookies. ';
 				settings.message += '<a href="/privacy-policy-and-cookies" target="_blank">Read more</a>';
-				settings.message += '<i id="impliedsubmit" class="fa fa-times pull-right" style="font-size:16px;color:rgba(0, 0, 0, 0.41);cursor:pointer;"></i>';
+				settings.message += '<i id="impliedsubmit" class="fa fa-times" style="font-size:16px;margin-left:15px;color:rgba(0, 0, 0, 0.41);cursor:pointer;"></i>';
 			}		
 		}	
 		
