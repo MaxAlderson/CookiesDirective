@@ -274,6 +274,7 @@
 			} else {
 				// Implied consent, just a button to close it
 				$('#impliedsubmit').click(function() {
+					$("#epd").slideUp();
 					// Set a cookie to prevent this being displayed again
 					setCookie('cookiesDirective',1,365,settings.domain);	
 					// Close the overlay
