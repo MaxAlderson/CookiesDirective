@@ -2,6 +2,9 @@
  * Version: 2.0.1
  * Author: Ollie Phillips
  * 24 October 2013
+ * Adjusted by: Max Alderson
+ * For: Origin Software Solutions projects
+ * Mostly adjusted to company needs, not suitable for broader use
  */
 
 ;(function($) {
@@ -185,7 +188,7 @@
 		// Create overlay, vary the disclosure based on explicit/implied consent
 		// Set our disclosure/message if one not supplied
 		var html = ''; 
-		html += '<div id="epd">';
+		html += '<div id="epd" style="display:none;">';
 		html += '<div id="cookiesdirective" style="position:'+ settings.css +';'+ settings.position + ':-300px;left:0px;width:100%;'
 		html += 'height:auto;background:' + settings.backgroundColor + ';opacity:.' + settings.backgroundOpacity + ';';
 		html += '-ms-filter: “alpha(opacity=' + settings.backgroundOpacity + ')”; filter: alpha(opacity=' + settings.backgroundOpacity + ');';
@@ -200,10 +203,15 @@
 				settings.message = 'Cookies help us optimize your experience. ';
 				settings.message += 'They are also an essential part of some of the functionality of our website. ';
 				settings.message += 'Areas of the website may not work correctly if you choose to delete or block these cookies. ';
-				settings.meggage += '<a href="/privacy-policy-and-cookies" target="_blank">Read more.</a>';
+				settings.message += '<a href="/privacy-policy-and-cookies" target="_blank">Read more</a>';
+				settings.message += '<i id="impliedsubmit" class="fa fa-times pull-right" style="font-size:16px;color:rgba(0, 0, 0, 0.41);cursor:pointer;"></i>';
 			} else {
-				// Implied consent message
-				settings.message = 'We have placed cookies on your computer to help make this website better.';
+				// Explicit consent message
+				settings.message = 'Cookies help us optimize your experience. ';
+				settings.message += 'They are also an essential part of some of the functionality of our website. ';
+				settings.message += 'Areas of the website may not work correctly if you choose to delete or block these cookies. ';
+				settings.message += '<a href="/privacy-policy-and-cookies" target="_blank">Read more</a>';
+				settings.message += '<i id="impliedsubmit" class="fa fa-times pull-right" style="font-size:16px;color:rgba(0, 0, 0, 0.41);cursor:pointer;"></i>';
 			}		
 		}	
 		
@@ -227,6 +235,7 @@
 		
 		html += '</div></div>';
 		$('body').prepend(html);
+		$("#epd").slideDown();
 		
 		// Serve the disclosure, and be smarter about branching
 		var dp = settings.position.toLowerCase();
@@ -288,3 +297,4 @@
 		});	
 	}
 })(jQuery);
+
