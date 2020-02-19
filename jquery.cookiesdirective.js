@@ -17,7 +17,8 @@
 			position: 'top',
 			duration: 0,
 			limit: 0,
-			message: null,				
+			message: null,
+			fontAwesome5: false,				
 			cookieScripts: null,
 			privacyPolicyUri: 'privacy.html',
 			scriptWrapper: function(){},	
@@ -32,7 +33,8 @@
 			defaultChecked: true,
 			showButton: true,
 			positionFixed: true,
-			domain: ''
+			domain: '',
+			crossColour: "rgba(0, 0, 0, 0.41)"
 		}, options);
 		
 		// Perform consent checks
@@ -211,7 +213,13 @@
 				settings.message += 'They are also an essential part of some of the functionality of our website. ';
 				settings.message += 'Areas of the website may not work correctly if you choose to delete or block these cookies. ';
 				settings.message += '<a href="/privacy-policy-and-cookies" target="_blank">Read more</a>';
-				settings.message += '<i id="impliedsubmit" class="fa fa-times" style="font-size:16px;margin-left:15px;color:rgba(0, 0, 0, 0.41);cursor:pointer;"></i>';
+				if(settings.fontAwesome5){
+					settings.message += '<i id="impliedsubmit" class="fas fa-times" style="font-size:16px;margin-left:15px;color:' + settings.crossColour + ';cursor:pointer;"></i>';
+				}
+				else
+				{
+					settings.message += '<i id="impliedsubmit" class="fa fa-times" style="font-size:16px;margin-left:15px;color:' + settings.crossColour + ';cursor:pointer;"></i>';
+				}
 			}		
 		}	
 		
